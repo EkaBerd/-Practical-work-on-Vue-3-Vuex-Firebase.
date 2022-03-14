@@ -43,14 +43,17 @@ export default {
 <style lang="scss" scoped>
 .home {
   color: #fff;
+  margin-right: 230px;
   .header {
     margin-bottom: 65px;
+
     .left,
     .right {
       flex: 1;
     }
     .right {
       justify-content: flex-end;
+      margin-right: 230px;
       align-items: center;
       .button,
       .filter {
@@ -74,7 +77,8 @@ export default {
           top: 25px;
           list-style: none;
           background-color: #1e2139;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
           li {
             cursor: pointer;
             font-size: 12px;
