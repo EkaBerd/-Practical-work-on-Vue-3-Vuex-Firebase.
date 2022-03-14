@@ -1,18 +1,47 @@
 <template>
   <div>
-    <div class="app flex">
+    <div v-if="!mobile" class="app flex flex-column">
       <MainNavigation />
       <div class="app-content flex flex-column"></div>
       <router-view />
     </div>
+
+  <div v-else class="mobile-message flex flex-column">
+    <h2>
+      К сожалению, это приложение не поддерживается на мобильных устройствах!
+    </h2>
+    <p>
+      Чтобы использовать это приложение, пожалуйста, используйте компьютер или
+      Tablet
+    </p>
+  </div>
   </div>
 </template>
 
 <script>
 import MainNavigation from "./components/MainNavigation.vue";
 export default {
+  data() {
+    return {
+      mobile: null,
+    };
+  },
   components: {
     MainNavigation,
+  },
+  created() {
+    this.checkScreen();
+    window.addEventListener("resize", this.checkScreen);
+  },
+  methods: {
+    checkScreen() {
+      const WindowWidth = window.innerWidth;
+      if (WindowWidth <= 750) {
+        this.mobile = true;
+        return;
+      }
+      this.mobile = false;
+    },
   },
 };
 </script>
@@ -25,7 +54,32 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+.app {
   background-color: #141625;
+  min-height: 100vh;
+  @media (min-width: 900px) {
+    flex-direction: row !important;
+  }
+  .app-content {
+    padding: 0 20px;
+    flex: 1;
+    position: relative;
+  }
+}
+
+.mobile-message {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #141625;
+  color: #fff;
+
+  p {
+    margin-top: 16px;
+  }
 }
 
 button,
