@@ -2,24 +2,22 @@
   <div>
     <div v-if="!mobile" class="app flex flex-column">
       <MainNavigation />
-      <div class="app-content flex flex-column"></div>
-      <router-view />
+      <div class="app-content flex flex-column">
+          <InvoiceModal />
+        <router-view />
+      </div>
     </div>
-
-  <div v-else class="mobile-message flex flex-column">
-    <h2>
-      К сожалению, это приложение не поддерживается на мобильных устройствах!
-    </h2>
-    <p>
-      Чтобы использовать это приложение, пожалуйста, используйте компьютер или
-      Tablet
-    </p>
-  </div>
+    <div v-else class="mobile-message flex flex-column">
+      <h2>Sorry, this app is not supported on Mobile Devices</h2>
+      <p>To use this app, please use a computer or Tablet</p>
+    </div>
   </div>
 </template>
 
 <script>
 import MainNavigation from "./components/MainNavigation.vue";
+import InvoiceModal from "./components/InvoiceModal.vue"
+
 export default {
   data() {
     return {
@@ -28,6 +26,7 @@ export default {
   },
   components: {
     MainNavigation,
+    InvoiceModal,
   },
   created() {
     this.checkScreen();

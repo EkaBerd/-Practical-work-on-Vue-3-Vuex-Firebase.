@@ -37,13 +37,20 @@ export default {
     };
   },
   components: {},
+  methods:{
+    newInvoice(){},
+
+    toggleFilterMenu(){
+      this.filterMenu = !this.filterMenu;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
   color: #fff;
-  margin-right: 230px;
+  margin-right: 250px;
   .header {
     margin-bottom: 65px;
 
@@ -53,7 +60,6 @@ export default {
     }
     .right {
       justify-content: flex-end;
-      margin-right: 230px;
       align-items: center;
       .button,
       .filter {
@@ -72,6 +78,7 @@ export default {
           height: 5px;
         }
         .filter-menu {
+          cursor: pointer;
           width: 120px;
           position: absolute;
           top: 25px;
